@@ -7,9 +7,7 @@
  * 1. Create a new file in the same folder as this file called "greet.js". (NOTE that you will need to include the extension ".js" in order for this to work)
  * 2. Copy the "greet" function below and paste it into the new file "greet.js"
 
-const greet = (name) => {
-  return `Hello ${name}!`;
-};
+
 
  * 3. Export the "greet" function from "greet.js"
  * 4. Import the function at the top of this file using the name "greet"
@@ -20,12 +18,14 @@ const greet = (name) => {
  * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import
  * @see https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export
  */
+import { greet } from "./greet.js";
 
 /**
  *  Return the highest number in the array
  * @param  { array }
  * @returns { number } the highest number that was in the array
  * @example
+ *
  * highestNumber([1, 10, 2, 3, 4]) // 10
  * highestNumber([-1, -5, -4]) // -1
  *
@@ -33,6 +33,7 @@ const greet = (name) => {
 
 const highestNumber = (array) => {
   // Write your answer here
+  return array.reduce((a, b) => Math.max(a, b), -Infinity);
 };
 
 /**
@@ -46,6 +47,8 @@ const highestNumber = (array) => {
 
 const combineArray = (array1, array2) => {
   // Write your answer here
+  const array = [...array1, ...array2];
+  return array;
 };
 
 /**
@@ -57,6 +60,8 @@ const combineArray = (array1, array2) => {
 
 const combineObject = (obj1, obj2) => {
   // Write your answer here
+  let combo = { ...obj1, ...obj2 };
+  return combo;
 };
 
 /**
@@ -68,6 +73,8 @@ const combineObject = (obj1, obj2) => {
 
 const doubleValues = (arr) => {
   // Write your answer here
+  let doubles = arr.map((num) => num * 2); // each num gets multiplied by 2
+  return doubles;
 };
 
 /**
@@ -81,6 +88,7 @@ const doubleValues = (arr) => {
  */
 const onlyEvenValues = (arr) => {
   // Write your answer here
+  return arr.filter((num) => num % 2 === 0); //divisibility by 2 and remainder is 0 it is an even number
 };
 
 /**
@@ -103,6 +111,17 @@ const onlyEvenValues = (arr) => {
  */
 const removeVowels = (str) => {
   // Write your answer here
+  const vowels = ["a", "e", "i", "o", "u"]; // vowels so we know what we are looking for
+  let newStr = str.toLowerCase(); // makes any string lowercase and easier to filter thru
+  let leftOver = ""; // we store left over letters after taking out vowels
+  for (let i = 0; i < newStr.length; i++) {
+    // filters thru each letter in a string
+    if (!vowels.includes(newStr[i])) {
+      // if not a vowel it gets added to leftOver
+      leftOver += newStr[i];
+    }
+  }
+  return leftOver;
 };
 
 /**
@@ -116,7 +135,7 @@ const getIsHungryText = () => {
   let isStomachEmpty = false;
   /* convert this if else statement into a ternary expression */
 
-  // let isHungry;
+  let isHungry = isStomachEmpty ? "Go eat something." : "Keep coding!";
   // if (isStomachEmpty) {
   //   isHungry = "Go eat something.";
   // } else {
@@ -140,8 +159,7 @@ const getTempOfTomorrow = () => {
   };
 
   // Start of what you should change
-  const today = AVG_TEMPERATURES.today;
-  const tomorrow = AVG_TEMPERATURES.tomorrow;
+  const { today, tomorrow } = AVG_TEMPERATURES;
   // End of what you should change
   return `Today's temperature is ${today}.\nTomorrow's temperature is ${tomorrow}`;
 };
@@ -159,6 +177,7 @@ const getTempOfTomorrow = () => {
  */
 const addItems = (arr) => {
   // Write your answer here
+  return arr.reduce((accum, currentValue) => accum + currentValue);
 };
 
 /**
@@ -174,6 +193,8 @@ const addItems = (arr) => {
 
 const removeDuplicates = (array) => {
   // Write your answer here
+  return [...new Set(array)];
+  //set is a data structure that creates a new set object which auto removes dup values
   // Return an array of unique values
 };
 
