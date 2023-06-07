@@ -1,40 +1,38 @@
-import greet from './greet.js';
-
-/**
- * Solve this problem using ES modules (ESM).
- * ES modules allow you break up your code into multiple files (or modules), and then share code between different files.
- * To learn about ES modules:
- * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules#default_exports_versus_named_exports
- *
- * 1. Create a new file in the same folder as this file called "greet.js". (NOTE that you will need to include the extension ".js" in order for this to work)
- * 2. Copy the "greet" function below and paste it into the new file "greet.js"
-
-
-
- * 3. Export the "greet" function from "greet.js"
- * 4. Import the function at the top of this file using the name "greet"
- * 
- * If you see "Error [ERR_MODULE_NOT_FOUND]:", then your export or import is not correct.
- *
- * ES6 Modules Reference:
- * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import
- * @see https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export
- */
+// You need this to complete the ES Modules exercise
+import greet from "./greet.js";
 
 /**
  *  Return the highest number in the array
  * @param  { array }
  * @returns { number } the highest number that was in the array
  * @example
- *
  * highestNumber([1, 10, 2, 3, 4]) // 10
  * highestNumber([-1, -5, -4]) // -1
  *
  **/
 
 const highestNumber = (array) => {
-  // Write your answer here
-  return array.reduce((a, b) => Math.max(a, b), -Infinity);
+  // Method 1
+  let highestNum = array[0];
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] > highestNum) highestNum = array[i];
+  }
+  return highestNum;
+
+  // Method 2
+  array.sort((a, b) => {
+    return b - a;
+  });
+  return array[0];
+
+  // Method 3
+  return Math.max(...array);
+
+  // Method 4
+  return array.reduce((highestNum, num) => {
+    if (num > highestNum) highestNum = num;
+    return highestNum;
+  });
 };
 
 /**
@@ -47,9 +45,7 @@ const highestNumber = (array) => {
  **/
 
 const combineArray = (array1, array2) => {
-  // Write your answer here
-  const array = [...array1, ...array2];
-  return array;
+  return [...array1, ...array2];
 };
 
 /**
@@ -60,9 +56,7 @@ const combineArray = (array1, array2) => {
  */
 
 const combineObject = (obj1, obj2) => {
-  // Write your answer here
-  let combo = { ...obj1, ...obj2 };
-  return combo;
+  return { ...obj1, ...obj2 };
 };
 
 /**
@@ -73,9 +67,13 @@ const combineObject = (obj1, obj2) => {
  */
 
 const doubleValues = (arr) => {
-  // Write your answer here
-  let doubles = arr.map((num) => num * 2); // each num gets multiplied by 2
-  return doubles;
+  // Method 1
+  return arr.map((num) => {
+    return num * 2;
+  });
+
+  // Method 2
+  return arr.map((num) => num * 2);
 };
 
 /**
@@ -88,8 +86,13 @@ const doubleValues = (arr) => {
  *   onlyEvenValues([5,1,2,3,10]) // [2,10]
  */
 const onlyEvenValues = (arr) => {
-  // Write your answer here
-  return arr.filter((num) => num % 2 === 0); //divisibility by 2 and remainder is 0 it is an even number
+  // Method 1
+  return arr.filter((arr) => {
+    return arr % 2 === 0;
+  });
+
+  // Method 2
+  return arr.filter((arr) => arr % 2 === 0);
 };
 
 /**
@@ -111,18 +114,15 @@ const onlyEvenValues = (arr) => {
  *  removeVowels('ZZZZZZ') // ('zzzzzz')
  */
 const removeVowels = (str) => {
-  // Write your answer here
-  const vowels = ["a", "e", "i", "o", "u"]; // vowels so we know what we are looking for
-  let newStr = str.toLowerCase(); // makes any string lowercase and easier to filter thru
-  let leftOver = ""; // we store left over letters after taking out vowels
-  for (let i = 0; i < newStr.length; i++) {
-    // filters thru each letter in a string
-    if (!vowels.includes(newStr[i])) {
-      // if not a vowel it gets added to leftOver
-      leftOver += newStr[i];
-    }
-  }
-  return leftOver;
+  // Method 1
+  return str
+    .toLowerCase()
+    .split("")
+    .filter((letter) => !["a", "e", "i", "o", "u"].includes(letter))
+    .join("");
+
+  // Method 2
+  return str.toLowerCase().replace(/[aeiou]/g, "");
 };
 
 /**
@@ -135,14 +135,7 @@ const getIsHungryText = () => {
   //don't change this variable
   let isStomachEmpty = false;
   /* convert this if else statement into a ternary expression */
-
   let isHungry = isStomachEmpty ? "Go eat something." : "Keep coding!";
-  // if (isStomachEmpty) {
-  //   isHungry = "Go eat something.";
-  // } else {
-  //   isHungry = "Keep coding!";
-  // }
-
   return isHungry;
 };
 
@@ -177,8 +170,13 @@ const getTempOfTomorrow = () => {
  *  addItems([1,-2,-3]) // -4
  */
 const addItems = (arr) => {
-  // Write your answer here
-  return arr.reduce((accum, currentValue) => accum + currentValue);
+  // Method 1
+  return arr.reduce((sum, num) => {
+    return sum + num;
+  });
+
+  // Method 2
+  return arr.reduce((sum, num) => sum + num);
 };
 
 /**
@@ -193,10 +191,8 @@ const addItems = (arr) => {
  */
 
 const removeDuplicates = (array) => {
-  // Write your answer here
+  /** Return the an array of unique values */
   return [...new Set(array)];
-  //set is a data structure that creates a new set object which auto removes dup values
-  // Return an array of unique values
 };
 
 /**
@@ -211,15 +207,15 @@ try {
   // However, I am just using try ... catch to get the unit test to work
 }
 export {
-  addItems,
+  greeter,
+  highestNumber,
   combineArray,
   combineObject,
   doubleValues,
+  onlyEvenValues,
+  removeVowels,
   getIsHungryText,
   getTempOfTomorrow,
-  greeter,
-  highestNumber,
-  onlyEvenValues,
+  addItems,
   removeDuplicates,
-  removeVowels,
 };
