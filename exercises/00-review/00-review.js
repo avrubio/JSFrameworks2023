@@ -1,5 +1,3 @@
-import greet from './greet.js';
-
 /**
  * Solve this problem using ES modules (ESM).
  * ES modules allow you break up your code into multiple files (or modules), and then share code between different files.
@@ -20,6 +18,7 @@ import greet from './greet.js';
  * @see https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Statements/import
  * @see https://developer.mozilla.org/en-US/docs/web/javascript/reference/statements/export
  */
+import { greet } from "./greet.js";
 
 /**
  *  Return the highest number in the array
@@ -211,15 +210,15 @@ try {
   // However, I am just using try ... catch to get the unit test to work
 }
 export {
-  addItems,
+  greeter,
+  highestNumber,
   combineArray,
   combineObject,
   doubleValues,
+  onlyEvenValues,
+  removeVowels,
   getIsHungryText,
   getTempOfTomorrow,
-  greeter,
-  highestNumber,
-  onlyEvenValues,
+  addItems,
   removeDuplicates,
-  removeVowels,
 };
