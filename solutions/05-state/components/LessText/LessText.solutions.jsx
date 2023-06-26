@@ -1,27 +1,28 @@
-import { useState } from 'react';
+import { useState } from "react";
 
-export function LessText({ text = "", maxLength }) {
-  const [hideText, setHideText] = useState(false);
-
+const LessText = ({ text = "", maxLength }) => {
+  const [hidden, setHidden] = useState(false);
   return (
     <div>
-      <p>{!hideText ? text.substring(0, maxLength).trim() : text}</p>
+      <p>{!hidden ? text.substring(0, maxLength).trim() : text}</p>
       <div>
         <button
           type="button"
           className="btn btn-dark mr-2"
-          onClick={() => setHideText(true)}
+          onClick={() => setHidden(true)}
         >
           Read More
         </button>
         <button
           type="button"
           className="btn btn-dark"
-          onClick={() => setHideText(false)}
+          onClick={() => setHidden(false)}
         >
           Read Less
         </button>
       </div>
     </div>
   );
-}
+};
+
+export default LessText;
