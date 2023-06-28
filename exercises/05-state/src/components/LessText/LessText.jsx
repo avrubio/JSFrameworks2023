@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState } from "react";
 
 export function LessText({ text = "", maxLength }) {
   const [hideText, setHideText] = useState(false);
@@ -22,6 +22,23 @@ export function LessText({ text = "", maxLength }) {
           Read Less
         </button>
       </div>
+    </div>
+  );
+}
+
+export function TempConverter({ temp = "" }) {
+  const [convert, setConvert] = useState(false);
+
+  return (
+    <div>
+      <p>{!convert ? (5 / 9) * (temp - 32) + " c" : temp + " f"} </p>
+      <button
+        type="button"
+        className="btn btn-dark"
+        onClick={() => setConvert(!convert)}
+      >
+        Convert
+      </button>
     </div>
   );
 }
