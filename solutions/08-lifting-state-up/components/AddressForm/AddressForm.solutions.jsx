@@ -1,4 +1,5 @@
 import "./AddressForm.css";
+
 import PropTypes from "prop-types";
 
 import countries from "../../assets/countries";
@@ -152,7 +153,6 @@ function AddressForm(props) {
           name="confirm"
           type="checkbox"
           className="form-check-input"
-          onChange={(e) => props.didSignUp(e.target.checked)}
         />
         <label htmlFor="confirm" className="form-check-label">
           Sign Up For Newsletter

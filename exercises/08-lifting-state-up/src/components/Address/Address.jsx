@@ -8,37 +8,21 @@ function App() {
   /**
    * You will need to call on useState here for form fields
    * e.g. first name, last name, etc.
-   */
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
-  const [address, setAddress] = useState("");
-  const [state, setState] = useState("");
-  const [city, setCity] = useState("");
-  const [zipCode, setZipCode] = useState("");
-  const [country, setCountry] = useState("");
+   */ const [formValues, setFormValues] = useState({});
   /**
    * You will need to pass props to <AddressResults /> and <AddressForm />
    */
+  const [didSignUp, setDidSignUp] = useState(false);
   return (
     <>
       {displayResults ? (
-        <AddressResults firstName={firstName} />
+        <AddressResults formValues={formValues} didSignUp={didSignUp} />
       ) : (
         <AddressForm
-          firstName={firstName}
-          setFirstName={setFirstName}
-          lastName={lastName}
-          setLastName={setLastName}
-          address={address}
-          setAddress={setAddress}
-          city={city}
-          setCity={setCity}
-          state={state}
-          setState={setState}
-          zipCode={zipCode}
-          setZipCode={setZipCode}
-          country={country}
-          setCountry={setCountry}
+          formValues={formValues}
+          setFormValues={setFormValues}
+          didSignUp={didSignUp}
+          setDidSignUp={setDidSignUp}
           setDisplayResults={setDisplayResults}
         />
       )}

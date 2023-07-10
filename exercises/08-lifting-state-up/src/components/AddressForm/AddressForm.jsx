@@ -18,13 +18,19 @@ import states from "../../assets/states";
  * - country
  * - a callback function(s) for setting first name, last name, etc.
  */
-function AddressForm({ props }) {
+function AddressForm(props) {
   /**
    * You will need to:
    * - Set the value of each <input> / <select> to something from props
    * - Use callback function(s) in props to update <App>'s state
    * - Add an event handler to handle form submission
    */
+  const handleChange = (e) => {
+    props.setFormValues({
+      ...props.formValues,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -42,8 +48,8 @@ function AddressForm({ props }) {
           name="firstName"
           type="text"
           className="form-control"
-          value={props.firstName}
-          onChange={(e) => props.setFirstName(e.target.value)}
+          value={props.formValues.firstName || ""}
+          onChange={handleChange}
         />
       </div>
       <div className="mb-3">
@@ -55,8 +61,8 @@ function AddressForm({ props }) {
           name="lastName"
           type="text"
           className="form-control"
-          value={props.lastName}
-          onChange={(e) => props.setLastName(e.target.value)}
+          value={props.formValues.lastName || ""}
+          onChange={handleChange}
         />
       </div>
       <div className="mb-3">
@@ -65,11 +71,11 @@ function AddressForm({ props }) {
         </label>
         <input
           id="addressLine1"
-          name="address"
+          name="addressLine1"
           type="text"
           className="form-control"
-          value={props.address}
-          onChange={(e) => props.setAddress(e.target.value)}
+          value={props.formValues.addressLine1 || ""}
+          onChange={handleChange}
         />
         <p className="help-block text-muted">
           Street address, P.O. box, company name, c/o
@@ -85,26 +91,24 @@ function AddressForm({ props }) {
           name="city"
           type="text"
           className="form-control"
-          value={props.city}
-          onChange={(e) => props.setCity(e.target.value)}
+          value={props.formValues.city || ""}
+          onChange={handleChange}
         />
       </div>
       <div className="mb-3">
         <label htmlFor="state" className="control-label">
           State / Province / Region
         </label>
-        <select id="state" name="state" className="form-control">
+        <select
+          id="state"
+          name="state"
+          className="form-control"
+          value={props.formValues.states || ""}
+          onChange={handleChange}
+        >
           <option></option>
           {states.map((state, idx) => {
-            return (
-              <option
-                key={`state-${idx}`}
-                value={props.state}
-                onChange={(e) => props.setState(e.target.value)}
-              >
-                {state}
-              </option>
-            );
+            return <option key={`state-${idx}`}>{state}</option>;
           })}
         </select>
       </div>
@@ -118,8 +122,8 @@ function AddressForm({ props }) {
           name="postalCode"
           type="text"
           className="form-control"
-          value={props.zipCode}
-          onChange={(e) => props.setZipCode(e.target.value)}
+          value={props.formValues.postalCode || ""}
+          onChange={handleChange}
         />
       </div>
 
@@ -133,8 +137,8 @@ function AddressForm({ props }) {
             return (
               <option
                 key={`state-${idx}`}
-                value={props.country}
-                onChange={(e) => props.setCountry(e.target.value)}
+                value={props.formValues.countries || ""}
+                onChange={handleChange}
               >
                 {state}
               </option>
