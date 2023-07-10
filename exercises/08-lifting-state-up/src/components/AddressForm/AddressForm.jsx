@@ -1,4 +1,5 @@
 import "./AddressForm.css";
+
 import PropTypes from "prop-types";
 
 import countries from "../../assets/countries";
@@ -17,15 +18,21 @@ import states from "../../assets/states";
  * - country
  * - a callback function(s) for setting first name, last name, etc.
  */
-function AddressForm(props) {
+function AddressForm({ props }) {
   /**
    * You will need to:
    * - Set the value of each <input> / <select> to something from props
    * - Use callback function(s) in props to update <App>'s state
    * - Add an event handler to handle form submission
    */
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    props.setDisplayResults(true);
+  };
+
   return (
-    <form className="container mt-4">
+    <form className="container mt-4" onSubmit={handleSubmit}>
       <div className="mb-3">
         <label htmlFor="firstName" className="control-label">
           First Name
@@ -35,6 +42,8 @@ function AddressForm(props) {
           name="firstName"
           type="text"
           className="form-control"
+          value={props.firstName}
+          onChange={(e) => props.setFirstName(e.target.value)}
         />
       </div>
       <div className="mb-3">
@@ -46,6 +55,8 @@ function AddressForm(props) {
           name="lastName"
           type="text"
           className="form-control"
+          value={props.lastName}
+          onChange={(e) => props.setLastName(e.target.value)}
         />
       </div>
       <div className="mb-3">
@@ -54,9 +65,11 @@ function AddressForm(props) {
         </label>
         <input
           id="addressLine1"
-          name="addressLine1"
+          name="address"
           type="text"
           className="form-control"
+          value={props.address}
+          onChange={(e) => props.setAddress(e.target.value)}
         />
         <p className="help-block text-muted">
           Street address, P.O. box, company name, c/o
@@ -67,7 +80,14 @@ function AddressForm(props) {
         <label htmlFor="city" className="control-label">
           City / Town
         </label>
-        <input id="city" name="city" type="text" className="form-control" />
+        <input
+          id="city"
+          name="city"
+          type="text"
+          className="form-control"
+          value={props.city}
+          onChange={(e) => props.setCity(e.target.value)}
+        />
       </div>
       <div className="mb-3">
         <label htmlFor="state" className="control-label">
@@ -76,7 +96,15 @@ function AddressForm(props) {
         <select id="state" name="state" className="form-control">
           <option></option>
           {states.map((state, idx) => {
-            return <option key={`state-${idx}`}>{state}</option>;
+            return (
+              <option
+                key={`state-${idx}`}
+                value={props.state}
+                onChange={(e) => props.setState(e.target.value)}
+              >
+                {state}
+              </option>
+            );
           })}
         </select>
       </div>
@@ -90,6 +118,8 @@ function AddressForm(props) {
           name="postalCode"
           type="text"
           className="form-control"
+          value={props.zipCode}
+          onChange={(e) => props.setZipCode(e.target.value)}
         />
       </div>
 
@@ -100,7 +130,15 @@ function AddressForm(props) {
         <select id="country" name="country" className="form-control">
           <option></option>
           {countries.map((state, idx) => {
-            return <option key={`state-${idx}`}>{state}</option>;
+            return (
+              <option
+                key={`state-${idx}`}
+                value={props.country}
+                onChange={(e) => props.setCountry(e.target.value)}
+              >
+                {state}
+              </option>
+            );
           })}
         </select>
       </div>
@@ -116,7 +154,11 @@ function AddressForm(props) {
         </label>
       </div>
 
-      <button type="submit" className="btn btn-primary">
+      <button
+        type="submit"
+        className="btn btn-primary"
+        // onClick={props.setDisplayResults(true)}
+      >
         Submit
       </button>
     </form>

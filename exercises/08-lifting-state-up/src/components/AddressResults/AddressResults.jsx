@@ -9,11 +9,20 @@
  * - zipcode / postal code
  * - country
  */
-function AddressResults(props) {
+function AddressResults({ displayResults }) {
   return (
     <div className="card card-body bg-light mt-4 mb-4">
       Results:
-      <ul className="list-unstyled mb-0">{/* Add <li></li> tags here */}</ul>
+      <ul className="list-unstyled mb-0">
+        {/* Add <li></li> tags here */}
+        <li>{displayResults.firstName}</li>
+        <li>{displayResults.lastName}</li>
+        <li>{displayResults.addressLine1}</li>
+        <li>{displayResults.city}</li>
+        <li>{displayResults.state}</li>
+        <li>{displayResults.zipcode}</li>
+        <li>{displayResults.country}</li>{" "}
+      </ul>
     </div>
   );
 }

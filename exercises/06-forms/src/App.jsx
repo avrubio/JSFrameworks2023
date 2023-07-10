@@ -7,11 +7,12 @@ import states from './assets/states.json';
 
 function App() {
   const [formData, setFormData] = useState({});
-  const [displayMessage, setDisplayMessage] = useState(false);
 
+  const [isChecked, setIsChecked] = useState(false);
+  // is formsubmitted
   const handleSubmit = (event) => {
     event.preventDefault();
-    setDisplayMessage(true);
+    // setFormsubmitted
   };
   const handleChange = (e) => {
     setFormData({
@@ -19,6 +20,8 @@ function App() {
       [e.target.name]: e.target.value,
     });
   };
+
+  //
 
   return (
     <form className="container mt-4" method="POST" onSubmit={handleSubmit}>
@@ -138,14 +141,16 @@ function App() {
           id="signUpForNewsLetter"
           name="signUpForNewsLetter"
           type="checkbox"
+          checked={isChecked}
           className="form-check-input"
-          onSubmit={(e) => setDisplayMessage(e.target.checked)}
+          onChange={(e) => setIsChecked(e.target.checked)}
         />
         <label htmlFor="signUpForNewsLetter" className="form-check-label">
           Sign Up For Newsletter
         </label>
         <div className="mb-3 form-check">
-          {displayMessage ? (
+          {/* && isFormsubmitted */}
+          {isChecked ? (
             <p>Thank you for signing up for our newsletter!</p>
           ) : (
             <p>Please sign up for our newsletter!</p>

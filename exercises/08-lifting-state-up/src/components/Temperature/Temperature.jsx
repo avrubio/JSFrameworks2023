@@ -1,8 +1,9 @@
-import { useState } from "react";
-import "./Temperature.css";
+import './Temperature.css';
 
-import TemperatureDisplay from "../TemperatureDisplay/TemperatureDisplay";
-import TemperatureScale from "../TemperatureScale/TemperatureScale";
+import { useState } from 'react';
+
+import TemperatureDisplay from '../TemperatureDisplay/TemperatureDisplay';
+import TemperatureScale from '../TemperatureScale/TemperatureScale';
 
 const CURRENT_TEMPERATURE_CELSIUS = 3;
 
@@ -28,17 +29,17 @@ function Temperature() {
       <div className="card card-body">
         <div className="mb-3">
           {/* START Move this into <TemperatureDisplay />. (You will see errors and have to fix them when you do this). */}
-          <div className="h4">Current Temperature:</div>
+          {/* <div className="h4">Current Temperature:</div>
           <div className="h1">
             {temperature} &deg; {scale}
-          </div>
+          </div> */}
           {/* END */}
 
           {/* Pass props to <TemperatureDisplay /> */}
-          <TemperatureDisplay />
+          <TemperatureDisplay temperature={temperature} scale={scale} />
         </div>
         {/* START Move this into <TemperatureScale />. (You will see errors and have to fix them when you do this). */}
-        <div
+        {/* <div
           className="btn-group"
           role="group"
           aria-label="Convert temperature"
@@ -55,11 +56,11 @@ function Temperature() {
           >
             Celsius
           </button>
-        </div>
+        </div> */}
         {/* END */}
 
         {/* Pass props to <TemperatureScale /> */}
-        <TemperatureScale />
+        <TemperatureScale setScale={setScale} />
       </div>
     </div>
   );
