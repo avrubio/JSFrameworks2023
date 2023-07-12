@@ -4,7 +4,6 @@ import './App.css';
 import {
   createContext,
   useContext,
-  useState,
 } from 'react';
 
 import translations from './assets/translations.json';
@@ -17,7 +16,7 @@ function App() {
   /**
    * Set state here. (See useState in "CreateAccount" below.)
    */
-  const [language, setLanguage] = useState("en");
+  const [language, setLanguage] = useContext(LanguageContext);
 
   /**
    * You will need to return more than just <CreateAccount />.
