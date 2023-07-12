@@ -1,14 +1,16 @@
 // Import what you need from React here
 // You will need to import the "TranslatorContext" and "TranslatorProvider" from src/contexts/TranslatorContext.js
-import "./App.css";
-import NavBar from "../NavBar/NavBar";
-import CreateAccount from "../CreateAccount/CreateAccount";
-import Footer from "../Footer/Footer";
+import './App.css';
+
+import CreateAccount from '../CreateAccount/CreateAccount';
+import Footer from '../Footer/Footer';
+import NavBar from '../NavBar/NavBar';
 
 function App() {
   /**
    * Handle the Provider here
    */
+
   return (
     <div className="App d-flex flex-column">
       <NavBar />

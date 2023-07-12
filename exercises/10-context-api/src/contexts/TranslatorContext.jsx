@@ -1,4 +1,7 @@
-import { createContext, useState } from "react";
+import {
+  createContext,
+  useState,
+} from 'react';
 
 /**
  * I'm initializing the Context API here.
@@ -11,5 +14,16 @@ export function TranslatorProvider({ children }) {
    * Complete me. This component should be similar to the "App" component in the first context API exercise.
    * @see exercises/08a-context-api/src/App.jsx
    * @see solutions/08a-context-api/App.solutions.jsx
+
+
+  /**
+   * Handle the Provider here
    */
+  const [language, setLanguage] = useState("en");
+
+  return (
+    <TranslatorContext.Provider value={[language, setLanguage]}>
+      {children}
+    </TranslatorContext.Provider>
+  );
 }
