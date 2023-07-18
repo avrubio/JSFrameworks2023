@@ -41,6 +41,7 @@ Note that we will go over setting up the project in class.
 - The Retro Board should have three categories: 1.) "Went Well" 2.) "To Improve" and 3.) "Action Items". The categories must be displayed in this order. They must be arranged in such a way that the user can easily tell what UI elements on the page belong to what category.
 
 - Each category should contain an add button or another type of UI element. When clicked or activated, the application will add a new retrospective item to the given category.
+<!-- add retrospective item -->
 
 - The user should be able to type text inside of each retrospective item. This text will be stored in state. The only time the text can change is when the user is typing inside the retrospective item.
 
@@ -49,7 +50,10 @@ Note that we will go over setting up the project in class.
 - The user should be able to move the retrospective item into a different category by clicking on a left or right arrow. If there is not a category to the left, then clicking the arrow should move the retrospective item to the rightmost category. The same applies to if there is no category to the right but in reverse. When the item moves from one category to the next, the retrospective item’s user input, visual structure, and appearance (with the exception of color) should stay the same.
 
 - For the final UI requirement, you must pick one of the following:
+
   - Add a “thumbs up” and “thumbs down” button (or other clickable UI elements) to your retrospective items. Clicking on one of these buttons should increase the number of “thumbs up” or “thumbs down” votes. Display the number of “thumbs up” and “thumbs down” votes in each retrospective item.
+  <!-- useState() to increase likes -->
+
   - Validate user input. Make text within the retrospective item required. When the retrospective item loses focus or is submitted (the type of event will depend on how you design the functionality of your application), the text should be validated in some way. Suggestions are to remove the retrospective item from the board or display an error message.
   - Add functionality to change the layout of the retrospective board. Include some type “layout switcher” UI element(s). When clicked or activated, the layout of the categories will change between a horizontal and vertical layout.  
     ![Layout switch example](layout-switcher-example.png)
