@@ -28,7 +28,7 @@ function App() {
     axios("https://ron-swanson-quotes.herokuapp.com/v2/quotes")
       .then((response) => {
         // 3. Display results
-        setQuote(response.data.data[0]);
+        setQuote(response.data[0]);
       })
       .catch(() => {
         // Or 3. Handle error if there is an error
