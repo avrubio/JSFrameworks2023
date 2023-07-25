@@ -1,6 +1,11 @@
-import { useState, useEffect } from "react";
-import axios from "axios";
-import "./App.css";
+import './App.css';
+
+import {
+  useEffect,
+  useState,
+} from 'react';
+
+import axios from 'axios';
 
 function App() {
   /**
