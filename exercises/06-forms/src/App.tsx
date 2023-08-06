@@ -1,20 +1,27 @@
 import './App.css';
 
-import { useState } from 'react';
+import {
+  ChangeEvent,
+  FormEvent,
+  useState,
+} from 'react';
 
-import countries from './assets/countries.json';
-import states from './assets/states.json';
+import { countries } from './assets/countries';
+import { states } from './assets/states';
 
 function App() {
+  type Form = {
+    firstName: string;
+    lastName: string;
+  };
   const [formData, setFormData] = useState({});
 
   const [isChecked, setIsChecked] = useState(false);
   // is formsubmitted
-  const handleSubmit = (event) => {
+  const handleSubmit = (event: FormEvent) => {
     event.preventDefault();
-    // setFormsubmitted
   };
-  const handleChange = (e) => {
+  const handleChange = (e: ChangeEvent<HTMLInputElement>) => {
     setFormData({
       ...formData,
       [e.target.name]: e.target.value,
@@ -82,8 +89,6 @@ function App() {
           name="city"
           type="text"
           className="form-control"
-          // value={cityTownInput}
-          // onChange={(e) => setCityTownInput(e.target.value)}
           value={formData.cityTown || ""}
           onChange={handleChange}
         />
@@ -143,7 +148,7 @@ function App() {
           type="checkbox"
           checked={isChecked}
           className="form-check-input"
-          onChange={(e) => setIsChecked(e.target.checked)}
+          onChange={(e: FormEvent) => setIsChecked(e.target.checked)}
         />
         <label htmlFor="signUpForNewsLetter" className="form-check-label">
           Sign Up For Newsletter

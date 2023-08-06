@@ -1,4 +1,4 @@
-[
+export const countries = [
   "Afghanistan",
   "Albania",
   "Algeria",
@@ -206,5 +206,5 @@
   "Virgin Islands (US)",
   "Yemen",
   "Zambia",
-  "Zimbabwe"
-]
+  "Zimbabwe",
+];
