@@ -9,6 +9,8 @@
 /**
  * This imports a list of products.
  */
+import { useParams } from "react-router-dom";
+
 import { inventory } from "../../assets/inventory";
 
 function Category() {
@@ -16,12 +18,16 @@ function Category() {
    * Category is hardcoded here.
    * This is the only part you will need to change in this file.
    */
-  const category = "office"; // change me
+  // const category = "office"; // change me
+  const { category } = useParams();
   /**
    * You will need to some kind of check to make sure the product exists.
    * If it doesn't, display an error message.
    */
 
+  if (!category) {
+    return `Not Found`;
+  }
   /**
    * All the products in a category. To see how this works, take a look at
    * @see exercises/10-react-router/src/assets/inventory.js

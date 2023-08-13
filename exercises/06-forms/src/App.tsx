@@ -1,20 +1,16 @@
-import './App.css';
+import "./App.css";
 
-import {
-  ChangeEvent,
-  FormEvent,
-  useState,
-} from 'react';
+import { ChangeEvent, FormEvent, useState } from "react";
 
-import { countries } from './assets/countries';
-import { states } from './assets/states';
+import { countries } from "./assets/countries";
+import { states } from "./assets/states";
 
 function App() {
   type Form = {
-    firstName: string;
-    lastName: string;
+    firstName?: string;
+    lastName?: string;
   };
-  const [formData, setFormData] = useState({});
+  const [formData, setFormData] = useState<Form>({});
 
   const [isChecked, setIsChecked] = useState(false);
   // is formsubmitted
@@ -148,7 +144,7 @@ function App() {
           type="checkbox"
           checked={isChecked}
           className="form-check-input"
-          onChange={(e: FormEvent) => setIsChecked(e.target.checked)}
+          onChange={(e) => setIsChecked(e.target.checked)}
         />
         <label htmlFor="signUpForNewsLetter" className="form-check-label">
           Sign Up For Newsletter

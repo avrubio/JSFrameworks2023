@@ -10,8 +10,10 @@
  * First, you will need to import the packages you need from React Router.
  * Then, import some things from React Router.
  */
-import Home from "../Home/Home";
+import { Route, Routes } from "react-router-dom";
+
 import Category from "../Category/Category";
+import Home from "../Home/Home";
 
 function App() {
   /**
@@ -28,7 +30,13 @@ function App() {
       <div className="bg-success text-white pt-1 pb-1 mb-3">
         <h1 className="container h2">NoName E-Commerce</h1>
       </div>
-      <main className="container mb-4">{/* Complete me */}</main>
+      <main className="container mb-4">
+        {/* Complete me */}
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/category/:category" element={<Category />} />
+        </Routes>
+      </main>
     </>
   );
 }

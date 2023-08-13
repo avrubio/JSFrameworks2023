@@ -1,9 +1,8 @@
-import axios, { AxiosRequestConfig } from 'axios';
+import axios from "axios";
 // Import something here
-import useSWR from 'swr';
+import useSWR from "swr";
 
-const fetcher = (url: AxiosRequestConfig<any>) =>
-  axios(url).then((res) => res.data.fact);
+const fetcher = (url: string) => axios(url).then((res) => res.data.fact);
 function CatFact() {
   /**
    * You will not need state store the fact in state anymore after refactoring App.jsx to use Suspense.
@@ -23,7 +22,7 @@ function CatFact() {
    * Instead of setting the fact in state, you will want to return the fact.
    */
 
-  const { data } = useSWR("https://catfact.ninja/fact", fetcher, {
+  const { data } = useSWR<String>("https://catfact.ninja/fact", fetcher, {
     suspense: true,
     revalidateOnFocus: false,
     revalidateOnMount: false,
