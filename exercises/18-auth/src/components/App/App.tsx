@@ -1,6 +1,14 @@
-import { useState, ChangeEvent } from "react";
+import {
+  ChangeEvent,
+  FormEvent,
+  useState,
+} from 'react';
+
 // import something here
 // import Axios (or use Fetch)
+import axios from 'axios';
+
+import Home from '../Home/Home';
 
 function App() {
   /**
@@ -17,10 +25,53 @@ function App() {
   /**
    * Complete all the logging in and logout logic
    */
+  const [token, setToken] = useState("");
 
+  const login = async () => {
+    setIsLoading(true);
+
+    axios("http://localhost:7001/api/login", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      data: {
+        username,
+        password,
+      },
+    })
+      .then((response) => {
+        if (!response.data.token) {
+          throw new Error("Incorrect username or password");
+        }
+        setToken(response.data.token);
+        setUsername("");
+      })
+      .catch((error) => {
+        console.error(error);
+
+        if (axios.isAxiosError(error) && error.response?.status === 401) {
+          setErrorMessage("invalid username or password");
+        } else setErrorMessage("Sorry, unexpected error");
+
+        setPassword("");
+        setIsLoading(false);
+      });
+  };
+
+  const logout = () => {
+    setToken("");
+  };
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    login();
+  };
   /**
    * If the user is logged in, you should render the <Home /> component instead.
    */
+  if (token) {
+    return <Home token={token} logout={logout} />;
+  }
   return (
     <div className="container mt-2 mb-5">
       <h1>Login</h1>
@@ -56,7 +107,12 @@ function App() {
             }
           />
         </div>
-        <button type="submit" className="btn btn-primary" disabled={isLoading}>
+        <button
+          type="submit"
+          className="btn btn-primary"
+          disabled={isLoading}
+          onSubmit={handleSubmit}
+        >
           Login
         </button>
       </form>
